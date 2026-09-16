@@ -1,14 +1,8 @@
+const Produto = require('../models/produto.model');
+
 const produtos = [
-    {
-        id: 1,
-        nome: 'Notebook',
-        preco: 6700
-    },
-    {
-        id: 2,
-        nome: 'Mouse',
-        preco: 120
-    }
+    new Produto(1, 'Notebook', 6700),
+    new Produto(2, 'Mouse', 120)
 ];
 
 function listar() {
@@ -16,15 +10,15 @@ function listar() {
 }
 
 function buscarPorId(id) {
-    return produtos.find(produto => produto.id === id);
+    return produtos.find(produto => produto.id === Number(id));
 }
 
 function criar(produto) {
-    const novoProduto = {
-        id: produtos.length + 1,
-        nome: produto.nome,
-        preco: produto.preco
-    };
+    const novoProduto = new Produto(
+        produtos.length + 1,
+        produto.nome,
+        produto.preco
+    );
 
     produtos.push(novoProduto);
 
