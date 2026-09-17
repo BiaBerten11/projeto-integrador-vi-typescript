@@ -1,14 +1,11 @@
 const express = require('express');
+const produtoRoutes = require('./src/routes/produto.routes');
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.json());
 
-const produtoRoutes = require('./src/routes/produto.routes');
 
-app.use(produtoRoutes);
+app.use("/produtos", produtoRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Servidor ativo na porta ${PORT}`);
-});
+app.listen(3000);
